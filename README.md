@@ -190,8 +190,8 @@ echo "Finished adding databases."
 3. **Run the Script**: Make the script executable and run it:
 
     ```bash
-    chmod +x add_databases.sh
-    ./add_databases.sh
+    chmod +x add_datasources.sh
+    ./add_datasources.sh
     ```
 
 4. **Check Results**: Verify that the databases have been added to your Metabase instance by logging into Metabase and checking the list of databases.
