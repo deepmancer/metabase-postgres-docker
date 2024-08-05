@@ -133,17 +133,21 @@ echo "Finished adding databases."
 ```
 
 ## Usage
+1. **Create a user in metabase**
 
-1. **Customize the Script**: Update the configuration variables with your Metabase details and Docker network name. Modify the `DATABASES` array to include your PostgreSQL databases.
+2. **Customize the Script**: Update the configuration variables with your Metabase details and Docker network name. Modify the `DATABASES` array to include your PostgreSQL databases.
 
-2. **Run the Script**: Make the script executable and run it:
+3. **Run the Script**: Make the script executable and run it:
 
     ```bash
     chmod +x add_databases.sh
     ./add_databases.sh
     ```
 
-3. **Check Results**: Verify that the databases have been added to your Metabase instance by logging into Metabase and checking the list of databases.
+4. **Check Results**: Verify that the databases have been added to your Metabase instance by logging into Metabase and checking the list of databases.
+
+![image](https://github.com/user-attachments/assets/5cc12efc-6123-4d22-9aa1-6373bac8bf81)
+
 
 ## Contributing
 
