@@ -13,7 +13,7 @@ The script performs the following tasks:
 
 Before running the script, ensure you have the following:
 - **jq**: A command-line tool for parsing JSON, used in the script for handling API responses.
-  **Docker compose file**: To set up a Metabase service with a PostgreSQL database as its backend.
+- **Docker compose**: To set up a Metabase service with a PostgreSQL database as its backend.
 
 The following `docker-compose.yml` runs a Metabase container:
 
