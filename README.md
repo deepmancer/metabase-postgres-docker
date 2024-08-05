@@ -32,19 +32,15 @@ services:
       MB_DB_USER: "metabase_user"
       MB_DB_PASS: "metabase_password"
       MB_DB_HOST: "metabase_db"
-      MB_PASSWORD_COMPLEXITY: "weak"
-      MB_PASSWORD_LENGTH: "8"
       MB_ADMIN_EMAIL: "youremail@example.com"
       MB_USER_EMAIL: "youremail@example.com"
       MB_USER_PASSWORD: "youpassword"
-      MAX_SESSION_AGE: "20160"
       MB_DISABLE_SESSION_THROTTLE: "true"
       MB_SOURCE_ADDRESS_HEADER: NULL
       MB_SHOW_LIGHTHOUSE_ILLUSTRATION: "false"
       MB_NO_SURVEYS: "true"
       MB_LOAD_ANALYTICS_CONTENT: "false"
       MB_ANON_TRACKING_ENABLED: "false"
-      MB_CHECK_FOR_UPDATES: "false"
       MB_SETUP_TOKEN: ""
     volumes:
       - metabase_data:/metabase-data
