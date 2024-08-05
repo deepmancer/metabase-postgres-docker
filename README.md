@@ -198,11 +198,6 @@ echo "Finished adding databases."
 
 ![image](https://github.com/user-attachments/assets/5cc12efc-6123-4d22-9aa1-6373bac8bf81)
 
-
-## Contributing
-
-Feel free to fork this repository, make improvements, and submit pull requests. If you encounter any issues or have suggestions, please open an issue in the GitHub repository.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
