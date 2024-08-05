@@ -1,4 +1,4 @@
-# Metabase Docker Integration Script
+# Metabase Automatic Docker Integration Script
 
 This repository contains a Bash script to automate the process of adding PostgreSQL databases to a Metabase Docker container. The script interacts with the Metabase API to configure databases, making it easier to manage and integrate various data sources into your Metabase instance.
 
