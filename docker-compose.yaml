@@ -12,8 +12,6 @@ services:
       MB_DB_USER: "metabase_user"
       MB_DB_PASS: "metabase_password"
       MB_DB_HOST: "metabase_db"
-      MB_PASSWORD_COMPLEXITY: "weak"
-      MB_PASSWORD_LENGTH: "8"
       MB_ADMIN_EMAIL: "youremail@example.com"
       MB_USER_EMAIL: "youremail@example.com"
       MB_USER_PASSWORD: "youpassword"
