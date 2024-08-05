@@ -154,5 +154,3 @@ Feel free to fork this repository, make improvements, and submit pull requests. 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-By breaking down the script and explaining each part, this README aims to make it easy for developers to understand, customize, and use the script effectively.
