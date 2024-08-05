@@ -12,9 +12,61 @@ The script performs the following tasks:
 ## Prerequisites
 
 Before running the script, ensure you have the following:
-- **Docker**: To manage your Docker containers and networks.
 - **jq**: A command-line tool for parsing JSON, used in the script for handling API responses.
+  **Docker compose file**: To set up a Metabase service with a PostgreSQL database as its backend.
 
+The following `docker-compose.yml` runs a Metabase container:
+
+```yaml
+services:
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    hostname: metabase
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_TYPE: "postgres"
+      MB_DB_DBNAME: "metabase_db"
+      MB_DB_PORT: "5432"
+      MB_DB_USER: "metabase_user"
+      MB_DB_PASS: "metabase_password"
+      MB_DB_HOST: "metabase_db"
+      MB_PASSWORD_COMPLEXITY: "weak"
+      MB_PASSWORD_LENGTH: "8"
+      MB_ADMIN_EMAIL: "youremail@example.com"
+      MB_USER_EMAIL: "youremail@example.com"
+      MB_USER_PASSWORD: "youpassword"
+      MAX_SESSION_AGE: "20160"
+      MB_DISABLE_SESSION_THROTTLE: "true"
+      MB_SOURCE_ADDRESS_HEADER: NULL
+      MB_SHOW_LIGHTHOUSE_ILLUSTRATION: "false"
+      MB_NO_SURVEYS: "true"
+      MB_LOAD_ANALYTICS_CONTENT: "false"
+      MB_ANON_TRACKING_ENABLED: "false"
+      MB_CHECK_FOR_UPDATES: "false"
+      MB_SETUP_TOKEN: ""
+    volumes:
+      - metabase_data:/metabase-data
+    depends_on:
+      - metabase_db
+
+  metabase_db:
+    image: postgres:16.3
+    container_name: "metabase_db"
+    hostname: "metabase_db"
+    ports:
+      - "5858:5432"
+    environment:
+      POSTGRES_DB: "metabase_db"
+      POSTGRES_USER: "metabase_user"
+      POSTGRES_PASSWORD: "metabase_password"
+    volumes:
+      - metabase_db_data:/var/lib/postgresql/data
+
+volumes:
+  metabase_data:
+  metabase_db_data:
 ## Script Breakdown
 
 ### 1. Configuration
