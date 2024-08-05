@@ -67,6 +67,8 @@ services:
 volumes:
   metabase_data:
   metabase_db_data:
+```
+
 ## Script Breakdown
 
 ### 1. Configuration
