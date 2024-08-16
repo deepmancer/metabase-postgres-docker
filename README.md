@@ -1,21 +1,35 @@
-# Metabase Automatic Docker Integration Script
+# 🚀 Metabase Automatic Docker Integration Script
 
-This repository contains a Bash script to automate the process of adding PostgreSQL databases to a Metabase Docker container. The script interacts with the Metabase API to configure databases, making it easier to manage and integrate various data sources into your Metabase instance.
+<p align="center">
+  <img src="https://img.shields.io/badge/Metabase-509EE3.svg?style=for-the-badge&logo=Metabase&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white"/>
+  <img src="https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Linux-FCC624.svg?style=for-the-badge&logo=Linux&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=for-the-badge&logo=GNU-Bash&logoColor=white"/>
+</p>
 
-## Overview
 
-The script performs the following tasks:
-1. Retrieves the gateway IP address of a specified Docker network.
-2. Authenticates with the Metabase API to obtain a session token.
-3. Adds PostgreSQL databases to the Metabase instance using the session token.
+### Simplify Your Metabase Setup with a Single Script 🛠️
 
-## Prerequisites
+Welcome to the **Metabase Automatic Docker Integration Script** repository! This handy Bash script automates the process of integrating PostgreSQL databases into your Metabase Docker container. By interacting with the Metabase API, this script streamlines database management, saving you time and reducing manual configuration.
 
-Before running the script, ensure you have the following:
-- **jq**: A command-line tool for parsing JSON, used in the script for handling API responses.
-- **Docker compose**: To set up a Metabase service with a PostgreSQL database as its backend.
+---
 
-The following `docker-compose.yml` runs a Metabase container:
+## ✨ Features
+
+This script does the heavy lifting for you:
+1. **Automatic Network Configuration**: Fetches the gateway IP of your specified Docker network.
+2. **Seamless Authentication**: Authenticates with the Metabase API to get a session token.
+3. **Database Integration**: Adds your PostgreSQL databases to Metabase with just one command.
+
+## 🚨 Prerequisites
+
+Before you dive in, make sure you have these tools ready:
+- **jq**: A lightweight and flexible command-line JSON processor.
+- **Docker Compose**: To set up and manage your Metabase service with a PostgreSQL backend.
+
+Here’s a sample `docker-compose.yml` to get you started:
 
 ```yaml
 services:
@@ -65,11 +79,13 @@ volumes:
   metabase_db_data:
 ```
 
-## Script Breakdown
+---
 
-### 1. Configuration
+## 📝 Script Breakdown
 
-The script starts by defining necessary variables for Metabase API access and Docker network details. Customize these variables according to your setup:
+### 1. Configure Your Environment
+
+Start by setting up your script with essential variables. Tailor these to match your Metabase setup and Docker network:
 
 ```bash
 METABASE_URL="http://localhost:3000/api"
@@ -79,13 +95,9 @@ METABASE_PASSWORD="yourpassword"
 NETWORK_NAME="your_private_network_name"
 ```
 
-- `METABASE_URL`: The URL of your Metabase API.
-- `METABASE_USERNAME` and `METABASE_PASSWORD`: Credentials for Metabase authentication.
-- `NETWORK_NAME`: The name of the Docker network to retrieve the gateway IP from.
+### 2. Find the Docker Network Gateway IP
 
-### 2. Retrieve Docker Network Gateway IP
-
-The script fetches the gateway IP for the specified Docker network. If the gateway IP is not found, it defaults to `127.0.0.1`.
+The script will automatically retrieve the gateway IP for your Docker network. If it can't find one, it will default to `127.0.0.1`:
 
 ```bash
 GATEWAY_IP=$(docker network inspect "$NETWORK_NAME" --format '{{range .IPAM.Config}}{{.Gateway}}{{end}}')
@@ -97,15 +109,15 @@ else
 fi
 ```
 
-### 3. Define Database Configurations
+### 3. Define Your Database Configurations
 
-Specify the PostgreSQL databases you want to add to Metabase in the `DATABASES` array. Each entry follows the format:
+Add the PostgreSQL databases you wish to integrate into the `DATABASES` array. The format is:
 
 ```
 "NAME|NETWORK_IP|PORT|DB_NAME|USER|PASSWORD"
 ```
 
-Example:
+For example:
 
 ```bash
 DATABASES=(
@@ -116,7 +128,7 @@ DATABASES=(
 
 ### 4. Authenticate with Metabase
 
-The `authenticate_metabase` function handles authentication with the Metabase API and retrieves a session token.
+This function logs into your Metabase instance and grabs a session token:
 
 ```bash
 authenticate_metabase() {
@@ -132,9 +144,9 @@ authenticate_metabase() {
 }
 ```
 
-### 5. Add Databases to Metabase
+### 5. Add Your Databases to Metabase
 
-The `add_database` function sends a request to add each PostgreSQL database to Metabase using the previously obtained session token.
+This function sends a request to the Metabase API to add each database:
 
 ```bash
 add_database() {
@@ -167,9 +179,9 @@ add_database() {
 }
 ```
 
-### 6. Execution
+### 6. Run the Script
 
-The script first authenticates with Metabase and then iterates over the database configurations to add each database.
+Authenticate with Metabase, and then add your databases:
 
 ```bash
 authenticate_metabase
@@ -182,24 +194,23 @@ done
 echo "Finished adding databases."
 ```
 
-## Usage
-1. **Create a user in metabase**
+## 🚀 How to Use
 
-2. **Customize the Script**: Update the configuration variables with your Metabase details and Docker network name. Modify the `DATABASES` array to include your PostgreSQL databases.
+1. **Set Up a Metabase User**: Make sure you have a user account ready in your Metabase instance.
 
-3. **Run the Script**: Make the script executable and run it:
+2. **Customize the Script**: Edit the configuration variables to match your Metabase setup and Docker network. Populate the `DATABASES` array with your PostgreSQL databases.
+
+3. **Execute the Script**: Make the script executable and run it:
 
     ```bash
     chmod +x add_datasources.sh
     ./add_datasources.sh
     ```
 
-4. **Check Results**: Verify that the databases have been added to your Metabase instance by logging into Metabase and checking the list of databases.
-
-![image](https://github.com/user-attachments/assets/5cc12efc-6123-4d22-9aa1-6373bac8bf81)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+4. **Verify the Results**: Log into your Metabase instance and check if your databases have been successfully added.
 
 ---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
