@@ -10,7 +10,7 @@
 </p>
 
 
-### Simplify Your Metabase Setup with a Single Script 🛠️
+> 🛠️ Simplify Your Metabase Setup with a Single Script 🛠️
 
 Welcome to the **Metabase Automatic Docker Integration Script** repository! This handy Bash script automates the process of integrating PostgreSQL databases into your Metabase Docker container. By interacting with the Metabase API, this script streamlines database management, saving you time and reducing manual configuration.
 
