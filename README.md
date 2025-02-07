@@ -1,4 +1,4 @@
-# 🚀 Metabase Automatic Docker Integration Script
+# 🚀 Metabase Automatic Docker Integration
 
 <p align="center">
   <img src="https://img.shields.io/badge/Metabase-509EE3.svg?style=for-the-badge&logo=Metabase&logoColor=white"/>
